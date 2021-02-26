@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Kurslar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <h2>Kurs</h2>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-center">
+            <div class="w-50">
+                <form action="/course/addCourse" method="POST" th:object="${course}">
+                    <div th:if="${#fields.hasErrors('*')}">
+                        <p>Tələblərə riyayyət edin!!</p>
+                    </div>
+                    <label for="studentId">Kod</label>
+                    <input id="studentId" name="id" type="text" class="form-control" placeholder="Kod daxil edin" th:field="*{id}">
+                    <span  th:if="${#fields.hasErrors('id')}">
+                        <ul>
+<!--                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>-->
+                         <li th:each="err : ${#fields.errors('id')}" th:text="${err}"></li>
+                        </ul>
+                     </span>
+                    <label for="studentNameId">Kursun Adı</label>
+                    <input id="studentNameId" name="courseName" type="text" class="form-control" placeholder="Ad daxil edin" th:field="*{courseName}">
+                    <span  th:if="${#fields.hasErrors('courseName')}">
+                         <ul>
+<!--                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>-->
+                        <li th:each="err : ${#fields.errors('courseName')}" th:text="${err}"></li>
+                         </ul>
+                     </span>
+                    <button type="submit" class="btn btn-success btn-sm mt-2 ml-2">Əlavə Edin</button>
+                    <a href="/course/courseList" class="btn btn-success btn-sm mt-2 ml-2">Bütün Kurslar</a>
+                    <a href="/student/index" class="btn btn-success btn-sm mt-2" type="submit">Əsas səhifə</a>
+                    <h4 class="text-danger" th:text="${emptyInputs}"></h4>
+                    <h4 class="text-danger" th:text="${existCourse}"></h4>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

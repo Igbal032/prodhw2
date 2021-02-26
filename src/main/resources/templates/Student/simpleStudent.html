@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Tələbə Ad</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-center">
+        <div class="w-50">
+            <form action="/student/updateSubmit" th:object="${singleStudent}" method="POST" class="w-100">
+                <div th:if="${#fields.hasErrors('*')}">
+                    <p>Tələblərə riyayyət edin!!</p>
+                </div>
+                <label for="studentIdInputId">Tələbənin Kodu</label>
+                <input id="studentIdInputId" name="Id" type="text" class="form-control" th:field="${singleStudent.Id}">
+                <span  th:if="${#fields.hasErrors('Id')}">
+                    <ul>
+<!--                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>-->
+                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>
+                    </ul>
+                </span>
+                <label for="studentNameInputId">Tələbənin Adı</label>
+                <input id="studentNameInputId" name="firstName" type="text" class="form-control" th:field="${singleStudent.firstName}">
+                <span  th:if="${#fields.hasErrors('firstName')}">
+                    <ul>
+<!--                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>-->
+                        <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"></li>
+                    </ul>
+                     </span>
+                <label for="studentSurnameInputId">Tələbənin Soyadı</label>
+                <input id="studentSurnameInputId" name="lastName" type="text" class="form-control" th:field="${singleStudent.lastName}">
+                <span  th:if="${#fields.hasErrors('lastName')}">
+                    <ul>
+<!--                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>-->
+                        <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"></li>
+                    </ul>
+                </span>
+                <p th:each="course:${courses}">
+                    <input type="checkbox" name="courses" th:value="${course.id}" th:checked="${singleStudent.courses.contains(course)}">
+                    <label th:text="${course.courseName}"></label>
+                </p>
+                <button class="btn btn-sm btn-success mt-2" type="submit">Təstiqlə</button>
+                <a href="/student/allStudents" class="btn btn-success btn-sm mt-2" type="submit">Bütün Tələbələr</a>
+                <a href="/student/index" class="btn btn-success btn-sm mt-2" type="submit">Əsas səhifə</a>
+                <h4 th:text="${emptyInputt}" class="text-danger"></h4>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+    // function addCourse(name) {
+    //     console.log("clicked")
+    // $.ajax({
+    //     type:"POST",
+    //     url:"/addCourse",
+    //     data:{courseName:name},
+    //     success: function (response) {
+    //         $("#courseSelectId").innerHTML(response)
+    //         console.log("success")
+    //         console.log(response)
+    //     },
+    //     error:function (response) {
+    //         console.error(response)
+    //     }
+    // })
+    // }
+</script>
+</body>
+</html>

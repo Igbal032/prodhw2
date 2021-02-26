@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Tələbə</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <h2>Tələbə</h2>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-center">
+            <div class="w-50">
+                <form action="/student/addStudent" method="POST" th:object="${student}">
+                    <div th:if="${#fields.hasErrors('*')}">
+                        <p>Tələblərə riyayyət edin!!</p>
+                    </div>
+                    <label for="studentId" >Kod</label>
+                    <input id="studentId" name="Id" type="text" th:field="${student.Id}" class="form-control" placeholder="Kod daxil edin">
+                    <span  th:if="${#fields.hasErrors('Id')}">
+                    <ul>
+<!--                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>-->
+                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>
+                    </ul>
+                     </span>
+                    <label for="studentNameId">Ad</label>
+                    <input id="studentNameId" name="firstName" type="text" class="form-control" th:field=${student.firstName} placeholder="Ad daxil edin">
+                    <span  th:if="${#fields.hasErrors('firstName')}">
+                    <ul>
+<!--                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>-->
+                        <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"></li>
+                    </ul>
+                     </span>
+                    <label for="studentSunameId">Soyad</label>
+                    <input id="studentSunameId" name="lastName" type="text" class="form-control" th:field="${student.lastName}" placeholder="Soyad daxil edin">
+                    <span  th:if="${#fields.hasErrors('lastName')}">
+                    <ul>
+<!--                        <li th:each="err : ${#fields.errors('Id')}" th:text="${err}"></li>-->
+                        <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"></li>
+                    </ul>
+                     </span>
+                    <p th:each="course:${courses}">
+                        <input type="checkbox" name="courses" th:value="${course.id}">
+                        <label th:text="${course.courseName}"></label>
+                    </p>
+                    <button type="submit" class="btn btn-success btn-sm mt-2 ml-2">Əlavə Edin</button>
+                    <a href="/student/allStudents" class="btn btn-success btn-sm mt-2 ml-2">Bütün Tələbər</a>
+                    <a href="/student/index" class="btn btn-success btn-sm mt-2" type="submit">Əsas səhifə</a>
+                    <h4 class="text-danger" th:text="${emptyInputs}"></h4>
+                    <h4 class="text-danger" th:text="${existStudent}"></h4>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

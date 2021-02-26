@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <h2>Tələbə axtarış sisteminə xoş gelmişsiniz!!!</h2>
+    </div>
+    <div class="row  d-flex justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-4 d-flex">
+            <form action="/student/course" method="GET">
+                  <button class="btn btn-success btn-sm" type="submit">Kurslar</button>
+            </form>
+            <form class="ml-2" action="/student/studenPage" method="GET">
+                <button class="btn btn-success btn-sm" type="submit">Tələbələr</button>
+            </form>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-2">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+            <form action="/student/getStudent" method="GET">
+                <label for="searchId">Telebe Axtarış</label>
+                <input id="searchId" name="id" type="text" class="form-control-sm" placeholder="Id daxil edin">
+                <button type="submit" class="btn btn-success btn-sm">Axtarış</button>
+                <h4 class="text-danger" th:text="*{emptyInputOrNotFound}"></h4>
+            </form>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-2">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+            <form action="/course/getCourse" method="GET">
+                <label for="searchId2">Kurs Axtarış</label>
+                <input id="searchId2" name="id" type="text" class="form-control-sm" placeholder="Id daxil edin">
+                <button type="submit" class="btn btn-success btn-sm">Axtarış</button>
+                <h4 class="text-danger" th:text="*{emptyInputOrNotFound2}"></h4>
+            </form>
+        </div>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

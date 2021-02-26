@@ -1,0 +1,17 @@
+insert into student values (1,'Igbal','Hasanli')
+insert into student values (2,'Hasan','Nagiyev')
+insert into student values (3,'Vusal','Azayli')
+insert into student values (4,'Cavid','Aliyev')
+
+insert into course values (1,'Web & Mobile I',null)
+insert into course values (2,'Web & Mobile II',null)
+insert into course values (3,'Calculus I',null)
+insert into course values (4,'Calculus II',null)
+
+insert into ENROLLMENT values (1,1)
+insert into ENROLLMENT values (1,3)
+insert into ENROLLMENT values (2,2)
+insert into ENROLLMENT values (2,4)
+insert into ENROLLMENT values (3,1)
+insert into ENROLLMENT values (3,4)
+insert into ENROLLMENT values (4,1)
